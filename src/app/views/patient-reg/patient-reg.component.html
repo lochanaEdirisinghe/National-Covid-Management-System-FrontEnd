@@ -1,0 +1,53 @@
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 shadow-lg pt-5 pb-5 mt-3">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group  pr-2 pl-2">
+              <label for="firstName">First Name</label>
+              <input class="form-control" formControlName="firstName" id="firstName" name="username" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="lastName">Last Name</label>
+              <input class="form-control" formControlName="lastName" id="lastName" name="lastName" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="age">Age</label>
+              <input class="form-control" formControlName="age" id="age" name="" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="gender">Gender</label>
+              <input class="form-control" formControlName="gender" id="gender" name="gender" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="district">District</label>
+              <input class="form-control" formControlName="district" id="district" name="district" type="text">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group  pr-2 pl-2">
+              <label for="contactNo">Contact No</label>
+              <input class="form-control" formControlName="contactNo" id="contactNo" name="contactNo" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="email">email</label>
+              <input class="form-control" formControlName="email" id="email" name="email" type="email">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="locationX">location X</label>
+              <input class="form-control" formControlName="locationX" id="locationX" name="locationX" type="text">
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="locationY">location Y</label>
+              <input class="form-control" formControlName="locationY" id="locationY" name="locationY" type="text">
+            </div>
+            <div class="btn-group pl-2">
+              <button (click)="register()" class="btn btn-primary">Register</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
