@@ -41,11 +41,11 @@
             <div class="form-group  pr-2 pl-2">
               <label for="district">District</label>
               <select class="form-control" formControlName="district" id="district" name="district" type="text">
-                <option>Hospital_A</option>
-                <option>Hospital_B</option>
-                <option>Hospital_C</option>
-                <option>Hospital_D</option>
-                <option>Hospital_E</option>
+                <option>District_A</option>
+                <option>District_B</option>
+                <option>District_C</option>
+                <option>District_D</option>
+                <option>District_E</option>
               </select>
               <div class="alert bg-danger text-white" *ngIf="!district.valid && district.touched">
                 <div *ngIf="district.errors.required">required to fill</div>

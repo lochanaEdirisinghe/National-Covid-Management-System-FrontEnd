@@ -63,11 +63,10 @@ export class PatientRegComponent implements OnInit {
     console.log(this.form.value)
     this.patientService.register(this.form.value).subscribe((response) => {
       if (response.code != 200) {
-        alert( "Invalid Patient" );
+        alert( "Invalid Registration" );
       }else if (response.code == 200 && response.data != null ) {
         this.patient=response.data
         console.log(this.patient)
-
         const navigationExtras: NavigationExtras = {
           state: {
             serialNo: this.patient.serialNo,

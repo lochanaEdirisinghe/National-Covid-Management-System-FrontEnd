@@ -11,7 +11,7 @@ import {AuthService} from "../../services/auth.service";
 export class LoginComponent implements OnInit {
 
   form = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    userId: new FormControl('', [Validators.required, Validators.minLength(4)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
   constructor(private router: Router, private authService: AuthService) { }
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get userName(){
-    return this.form.get('username')
+  get userId(){
+    return this.form.get('userId')
   }
 
   get passWord(){
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.value).subscribe((response) => {
       if (response.code != 200) {
         alert( "Username And Password is Incorrect" );
-      } else if (response.code == 200 && response.data == 'hospital') {
+      } else if (response.code == 200 && response.data == 'doctor') {
         //navigate to views
-        this.router.navigate( ['hospital'] );
+        this.router.navigate( ['doctor'] );
       } else if (response.code == 200 && response.data == 'moh') {
         this.router.navigate( ['moh'] );
       }

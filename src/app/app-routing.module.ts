@@ -19,7 +19,7 @@ const routes: Routes = [
     path : 'register', component : PatientRegComponent
   },
   {
-    path : 'hospital', component : DoctorComponent
+    path : 'doctor', component : DoctorComponent
   },
   {
     path : 'moh', component : MohComponent

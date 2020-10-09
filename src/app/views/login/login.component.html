@@ -3,16 +3,16 @@
     <div class="col-5 shadow-lg pt-5 pb-5 mt-3">
       <form [formGroup]="form">
         <div class="form-group  pr-2 pl-2">
-          <label for="userName">UserName</label>
-          <input class="form-control" formControlName="username" id="userName" name="username" type="text">
-          <div class="alert bg-danger text-white" *ngIf="!userName.valid && userName.touched">
-            <div *ngIf="userName.errors.required">required to fill</div>
-            <div *ngIf="userName.errors.minlength">minimum length is 4</div>
+          <label for="userId">UserId</label>
+          <input class="form-control" formControlName="userId" id="userId" name="userId" type="text">
+          <div class="alert bg-danger text-white" *ngIf="!userId.valid && userId.touched">
+            <div *ngIf="userId.errors.required">required to fill</div>
+            <div *ngIf="userId.errors.minlength">minimum length is 4</div>
           </div>
         </div>
 
         <div class="form-group  pr-2 pl-2">
-          <label for="userName">Password</label>
+          <label for="passWord">Password</label>
           <input class="form-control" formControlName="password" id="passWord" name="password" type="password">
           <div class="alert bg-danger text-white" *ngIf="!passWord.valid && passWord.touched">
             <div *ngIf="passWord.errors.required">required to fill</div>
