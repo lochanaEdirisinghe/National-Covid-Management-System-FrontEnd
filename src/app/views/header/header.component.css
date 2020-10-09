@@ -29,6 +29,7 @@ header>h1{
   font-size: 25px;
   outline: none;
   cursor: pointer;
+  width: 500px;
 }
 
 header>nav>ul>li{

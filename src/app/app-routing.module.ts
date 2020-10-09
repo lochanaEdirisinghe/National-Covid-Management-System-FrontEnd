@@ -3,29 +3,35 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from "./views/login/login.component";
 import {HomeComponent} from "./views/home/home.component";
 import {PatientRegComponent} from "./views/patient-reg/patient-reg.component";
+import {DoctorComponent} from "./views/doctor/doctor.component";
+import {MohComponent} from "./views/moh/moh.component";
+import {PatientResponseComponent} from "./views/patient-response/patient-response.component";
 
 
 const routes: Routes = [
   {
-    path : 'login',
-    component : LoginComponent
+    path : 'login', component : LoginComponent
   },
   {
-    path : 'home',
-    component: HomeComponent
+    path : 'home', component: HomeComponent
   },
   {
-    path : 'register',
-    component : PatientRegComponent
+    path : 'register', component : PatientRegComponent
   },
   {
-    path: "",
-    pathMatch: 'full',
-    redirectTo: 'home'
+    path : 'hospital', component : DoctorComponent
   },
   {
-    path: "**",
-    redirectTo: 'home'
+    path : 'moh', component : MohComponent
+  },
+  {
+    path : 'patientResponse', component : PatientResponseComponent
+  },
+  {
+    path: "", pathMatch: 'full', redirectTo: 'home'
+  },
+  {
+    path: "**", redirectTo: 'home'
   }
 
 

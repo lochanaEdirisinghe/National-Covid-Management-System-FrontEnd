@@ -5,11 +5,21 @@
         <div class="form-group  pr-2 pl-2">
           <label for="userName">UserName</label>
           <input class="form-control" formControlName="username" id="userName" name="username" type="text">
+          <div class="alert bg-danger text-white" *ngIf="!userName.valid && userName.touched">
+            <div *ngIf="userName.errors.required">required to fill</div>
+            <div *ngIf="userName.errors.minlength">minimum length is 4</div>
+          </div>
         </div>
+
         <div class="form-group  pr-2 pl-2">
           <label for="userName">Password</label>
           <input class="form-control" formControlName="password" id="passWord" name="password" type="password">
+          <div class="alert bg-danger text-white" *ngIf="!passWord.valid && passWord.touched">
+            <div *ngIf="passWord.errors.required">required to fill</div>
+            <div *ngIf="passWord.errors.minlength">minimum length is 6</div>
+          </div>
         </div>
+
         <div class="btn-group pl-2">
           <button (click)="login()" class="btn btn-primary">Login</button>
         </div>

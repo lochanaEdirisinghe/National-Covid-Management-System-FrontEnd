@@ -12,6 +12,7 @@ import { MohComponent } from './views/moh/moh.component';
 import { PatientRegComponent } from './views/patient-reg/patient-reg.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { PatientResponseComponent } from './views/patient-response/patient-response.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     HomeComponent,
     LoginComponent,
     MohComponent,
-    PatientRegComponent
+    PatientRegComponent,
+    PatientResponseComponent
   ],
   imports: [
     BrowserModule,
