@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-response',
@@ -14,20 +14,16 @@ export class PatientResponseComponent implements OnInit {
   queueNo: number
   bedAvailablility: boolean
 
-  @Input() patient
-  constructor(private router: Router) {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation.extras.state as {
-      serialNo: string,
-      bedNo: number,
-      hospitalName: string,
-      queueNo: number
-    };
+  constructor(private router: Router, private route: ActivatedRoute) {
 
-    this.serialNo= state.serialNo
-    this.bedNo=state.bedNo
-    this.hospitalName=state.hospitalName
-    this.queueNo= state.queueNo
+    this.route.queryParamMap.subscribe((value )=> {
+      this.serialNo = value.get('serialNo')
+      this.bedNo = Number(value.get('bedNo'))
+      this.hospitalName = value.get('hospitalName')
+      this.queueNo= Number(value.get('queueNo'))
+
+    });
+
     if(this.queueNo>0){
       this.bedAvailablility = false
     }else {

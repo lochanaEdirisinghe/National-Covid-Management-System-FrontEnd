@@ -32,10 +32,13 @@ export class LoginComponent implements OnInit {
       if (response.code != 200) {
         alert( "Username And Password is Incorrect" );
       } else if (response.code == 200 && response.data == 'doctor') {
-        //navigate to views
-        this.router.navigate( ['doctor'] );
+        console.log(response.data)
+        this.router.navigate( ['/doctor'], {
+          queryParams:{doctorId: this.userId.value}
+        });
+
       } else if (response.code == 200 && response.data == 'moh') {
-        this.router.navigate( ['moh'] );
+        this.router.navigate( ['/moh'] );
       }
     });
   }

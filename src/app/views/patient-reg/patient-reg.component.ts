@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../services/patient.service";
-import {PatientDto} from "../../dto/patient-dto";
-import {NavigationExtras, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-reg',
@@ -23,8 +22,6 @@ export class PatientRegComponent implements OnInit {
     locationY: new FormControl('', [Validators.required, Validators.pattern('[0-9]{2,3}')])
 
   });
-
-  patient : PatientDto = null;
 
   constructor(private patientService: PatientService, private router: Router) { }
 
@@ -64,19 +61,16 @@ export class PatientRegComponent implements OnInit {
     this.patientService.register(this.form.value).subscribe((response) => {
       if (response.code != 200) {
         alert( "Invalid Registration" );
+
       }else if (response.code == 200 && response.data != null ) {
-        this.patient=response.data
-        console.log(this.patient)
-        const navigationExtras: NavigationExtras = {
-          state: {
-            serialNo: this.patient.serialNo,
-            bedNo: this.patient.bedNo,
-            hospitalName: this.patient.hospitalName,
-            queueNo: this.patient.queueNo
+        this.router.navigate( ['/patientResponse'], {
+          queryParams :{
+            serialNo: response.data.serialNo,
+            bedNo: response.data.bedNo,
+            hospitalName: response.data.hospitalName,
+            queueNo: response.data.queueNo
           }
-        };
-        //navigate to views
-        this.router.navigate( ['patientResponse'], navigationExtras);
+        });
       }
     });
     this.form.reset()
