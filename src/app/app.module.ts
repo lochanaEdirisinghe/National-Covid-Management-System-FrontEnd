@@ -11,8 +11,9 @@ import { LoginComponent } from './views/login/login.component';
 import { MohComponent } from './views/moh/moh.component';
 import { PatientRegComponent } from './views/patient-reg/patient-reg.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PatientResponseComponent } from './views/patient-response/patient-response.component';
+import {AppInterceptor} from "./services/app-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { PatientResponseComponent } from './views/patient-response/patient-respo
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

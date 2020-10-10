@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {ROLE, TOKEN_KEY, USER_DTO} from "../../constants/constant";
 
 @Component({
   selector: 'app-login',
@@ -29,17 +30,24 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.form.value).subscribe((response) => {
-      if (response.code != 200) {
-        alert( "Username And Password is Incorrect" );
-      } else if (response.code == 200 && response.data == 'doctor') {
-        console.log(response.data)
-        this.router.navigate( ['/doctor'], {
-          queryParams:{doctorId: this.userId.value}
-        });
+       if (response.code == 401) {
+        alert("Username And Password is Incorrect");
+      } else if (response.code == 200) {
+        //store user and token in the browser
+        localStorage.setItem(TOKEN_KEY, response.message);
+        localStorage.setItem(USER_DTO, JSON.stringify(response.data));
+        localStorage.setItem(ROLE, response.data.role);
 
-      } else if (response.code == 200 && response.data == 'moh') {
-        this.router.navigate( ['/moh'] );
+         //navigate to views
+        if(response.data.role == 'doctor'){
+          this.router.navigate( ['/doctor'], {
+            queryParams:{doctorId: this.userId.value}
+          });
+        }else if(response.data.role == 'moh'){
+          this.router.navigate( ['/moh']);
+        }
       }
+
     });
   }
 

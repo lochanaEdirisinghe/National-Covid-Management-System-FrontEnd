@@ -6,6 +6,8 @@ import {PatientRegComponent} from "./views/patient-reg/patient-reg.component";
 import {DoctorComponent} from "./views/doctor/doctor.component";
 import {MohComponent} from "./views/moh/moh.component";
 import {PatientResponseComponent} from "./views/patient-response/patient-response.component";
+import {AuthGuard} from "./services/auth-guard.service";
+import {AuthGuard2} from "./services/authguard2.service";
 
 
 const routes: Routes = [
@@ -19,10 +21,10 @@ const routes: Routes = [
     path : 'register', component : PatientRegComponent
   },
   {
-    path : 'doctor', component : DoctorComponent
+    path : 'doctor', component : DoctorComponent, canActivate: [AuthGuard]
   },
   {
-    path : 'moh', component : MohComponent
+    path : 'moh', component : MohComponent, canActivate: [AuthGuard2]
   },
   {
     path : 'patientResponse', component : PatientResponseComponent

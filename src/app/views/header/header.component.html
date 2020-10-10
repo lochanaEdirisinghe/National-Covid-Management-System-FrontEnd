@@ -3,8 +3,11 @@
   <nav>
 
     <ul>
-      <li routerLink="login" routerLinkActive="active">Login</li>
+      <li routerLink="doctor" routerLinkActive="active">Doctor</li>
+      <li routerLink="moh" routerLinkActive="active">Moh</li>
       <li routerLink="register" routerLinkActive="active">Register</li>
+      <li routerLink="login" routerLinkActive="active">Login</li>
+      <li (click)="logout()">Logout</li>
     </ul>
   </nav>
 </header>

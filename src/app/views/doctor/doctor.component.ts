@@ -18,27 +18,21 @@ export class DoctorComponent implements OnInit {
     this.route.queryParamMap.subscribe((value)=> {
       this.doctorId=value.get('doctorId')
     })
+  }
 
+  ngOnInit(): void {
     this.doctorService.getBedDetails( this.doctorId ).subscribe( (response) => {
-      console.log(response)
       if (response.code != 200) {
         alert( "Invalid " );
       } else if (response.code == 200 && response.data != null) {
-        console.log( response.data )
+
         this.hospitalId = response.data.hospitalId;
         this.hospitalName = response.data.hospitalName
       }
     } );
-
   }
-
-
-
-  ngOnInit(): void {
-
-  }
-
-
 
 
 }
+
+
