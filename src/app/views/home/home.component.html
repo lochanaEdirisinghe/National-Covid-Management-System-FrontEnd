@@ -1,5 +1,36 @@
 <div class="jumbotron">
-  <h1>WELCOME</h1>
-  <h1>NCMS</h1>
+    <div class="row justify-content-center">
+      <div class="col-6 shadow-sm pt-1 pb-5 mt-3">
+        <h1>Total Patients(Country Level)  : {{totalCount}}</h1>
+        <h3>Active Cases  : {{activecases}}</h3>
+        <h3>Discharged Patients  : {{dischargedcount}}</h3>
+        <div class="text-center" style="margin-top: 30px">
+          <img src="https://cdn.shopify.com/s/files/1/0009/6593/5164/files/COVID19-INFO_480x480.jpg?v=1587833998" class="rounded" alt="...">
+        </div>
+
+      </div>
+      <div class="col-6 shadow-sm pt-1 pb-5 mt-3">
+        <h1>Total Patients(Hospital Level)</h1>
+
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">HospitalId</th>
+            <th scope="col">HospitalName</th>
+            <th scope="col">Patient Count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let b of patientCount">
+            <td>{{b.hospitalId}}</td>
+            <td>{{b.hospitalName}}</td>
+            <td>{{b.count}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
 
 </div>

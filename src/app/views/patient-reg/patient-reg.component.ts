@@ -57,7 +57,6 @@ export class PatientRegComponent implements OnInit {
   }
 
   register(){
-    console.log(this.form.value)
     this.patientService.register(this.form.value).subscribe((response) => {
       if (response.code != 200) {
         alert( "Invalid Registration" );

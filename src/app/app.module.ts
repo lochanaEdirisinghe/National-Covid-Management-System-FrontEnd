@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PatientResponseComponent } from './views/patient-response/patient-response.component';
 import {AppInterceptor} from "./services/app-interceptor.service";
 import { PatientComponent } from './views/patient/patient.component';
+import { HospitalAddComponent } from './views/hospital-add/hospital-add.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PatientComponent } from './views/patient/patient.component';
     MohComponent,
     PatientRegComponent,
     PatientResponseComponent,
-    PatientComponent
+    PatientComponent,
+    HospitalAddComponent
   ],
   imports: [
     BrowserModule,

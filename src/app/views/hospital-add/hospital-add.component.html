@@ -1,0 +1,55 @@
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 shadow-lg pt-5 pb-5 mt-3" style="text-align: center">
+      <h2>Add new hospital</h2>
+      <br>
+      <form [formGroup]="form">
+            <div class="form-group  pr-2 pl-2">
+              <label for="hospitalId">Hospital Id</label>
+              <input class="form-control" formControlName="hospitalId" id="hospitalId" name="username" type="text">
+              <div class="alert bg-danger text-white"*ngIf="!hospitalId.valid && hospitalId.touched">
+                <div *ngIf="hospitalId.errors.required">required to fill</div>
+                <div *ngIf="hospitalId.errors.pattern">pattern is wrong</div>
+              </div>
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="name">Name</label>
+              <input class="form-control" formControlName="name" id="name" name="name" type="text">
+              <div class="alert bg-danger text-white" *ngIf="!name.valid && name.touched">
+                <div *ngIf="name.errors.required">required to fill</div>
+                <div *ngIf="name.errors.pattern">pattern is wrong</div>
+              </div>
+            </div>
+            <div class="form-group  pr-2 pl-2">
+              <label for="district">District</label>
+              <input class="form-control" formControlName="district" id="district" name="" type="text">
+              <div class="alert bg-danger text-white" *ngIf="!district.valid && district.touched">
+                <div *ngIf="district.errors.required">required to fill</div>
+                <div *ngIf="district.errors.pattern">pattern is wrong</div>
+              </div>
+            </div>
+
+            <div class="form-group  pr-2 pl-2">
+              <label for="locationX">Location X</label>
+              <input class="form-control" formControlName="locationX" id="locationX" name="locationY" type="text">
+              <div class="alert bg-danger text-white" *ngIf="!locationX.valid && locationX.touched">
+                <div *ngIf="locationX.errors.required">required to fill</div>
+                <div *ngIf="locationX.errors.pattern">pattern is wrong</div>
+              </div>
+            </div>
+
+            <div class="form-group  pr-2 pl-2">
+              <label for="locationY">Location Y</label>
+              <input class="form-control" formControlName="locationY" id="locationY" name="locationY" type="text">
+              <div class="alert bg-danger text-white" *ngIf="!locationY.valid && locationY.touched">
+                <div *ngIf="locationY.errors.required">required to fill</div>
+                <div *ngIf="locationY.errors.pattern">pattern is wrong</div>
+              </div>
+            </div>
+        <div class="btn-group pl-2">
+          <button (click)="addHospital()" class="btn btn-primary">save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

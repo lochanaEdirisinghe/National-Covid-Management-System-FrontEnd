@@ -1,1 +1,49 @@
-<h1>MOH</h1>
+<section class="container-fluid">
+  <div class="row justify-content-center">
+
+    <div class="form-control" style="margin-top: 50px">
+      <button type="button" class="btn btn-secondary btn-block btn-group-small"  (click)="hospital()">Add new hospital</button>
+    </div>
+
+    <br>
+
+    <div class="col-6 shadow-sm pt-5 pb-5 mt-3">
+      <h1>Queue Details </h1>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">PatientId</th>
+          <th scope="col">QueueNo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of queue">
+          <td>{{c.patientId}}</td>
+          <td>{{c.queueId}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6 shadow-sm pt-5 pb-5 mt-3">
+      <h1>All bed Details </h1>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">HospitalId</th>
+          <th scope="col">HospitalName</th>
+          <th scope="col">Available Bed Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of availableBedCounts">
+          <td>{{b.hospitalId}}</td>
+          <td>{{b.hospitalName}}</td>
+          <td>{{b.count}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

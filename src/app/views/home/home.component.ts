@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Count} from "../../dto/count";
+import {PatientService} from "../../services/patient.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  totalCount;
+  activecases;
+  dischargedcount;
+
+  patientCount: Count[]=[]
+
+  constructor(private patientService: PatientService) { }
 
   ngOnInit(): void {
+    this.patientService.getTotalCount().subscribe((resp)=>{
+      this.activecases=resp.data.activecount;
+      this.dischargedcount = resp.data.discharged
+      this.totalCount = (resp.data.activecount + resp.data.discharged);
+      console.log(resp.data)
+    })
+
+    this.patientService.getHospitalPatientCount().subscribe((resp)=>{
+      this.patientCount=resp.data;
+      console.log(resp.data)
+    })
   }
 
 }

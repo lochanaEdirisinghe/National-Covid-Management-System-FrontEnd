@@ -1,0 +1,11 @@
+section{
+  margin-bottom: 20px;
+}
+
+.form-control.ng-touched.ng-valid{
+  border: 2px solid green !important;
+}
+
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red !important;
+}
