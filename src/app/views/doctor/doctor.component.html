@@ -2,23 +2,23 @@
   <div class="row justify-content-center">
     <div class="col-12 shadow-lg pt-5 pb-5 mt-3">
       <h1>Hospital : {{hospitalId}} , {{hospitalName}} </h1>
-
+      <h3>Doctor : {{doctorId}}</h3>
 
       <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
           <th scope="col">BedNo</th>
           <th scope="col">PatientId</th>
-          <th scope="col">IsAdmitted</th>
-          <th scope="col">IsDischarged</th>
+          <th scope="col">Admit</th>
+          <th scope="col">Discharge</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let c of hospitalBed" (click)="patientView(c.patientId)">
-          <td>{{c.bedId}} </td>
+        <tr *ngFor="let c of hospitalBed">
+          <td>&nbsp;&nbsp;{{c.bedId}}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary btn-sm" (click)="patientView(c.patientId)">View</button></td>
           <td>{{c.patientId}}</td>
-          <td>{{c.admitted}} <button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': c.admitted, 'btn btn-primary':true}"  >Admit</button> </td>
-          <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': c.discharged, 'btn btn-danger':true}">Discharged</button></td>
+          <td>{{c.admitted}} &nbsp; &nbsp;&nbsp;&nbsp;<button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': ((c.admitted)=='admitted'), 'btn btn-outline-primary btn-sm':true}"  >Admit</button> </td>
+          <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': c.discharged, 'btn btn-outline-danger btn-sm':true}">Discharged</button></td>
         </tr>
 
         </tbody>

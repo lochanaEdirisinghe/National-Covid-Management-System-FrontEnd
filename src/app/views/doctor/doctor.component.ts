@@ -17,7 +17,7 @@ export class DoctorComponent implements OnInit {
   hospitalId;
   hospitalName;
 
-  hospitalBed : HospitalBeds[] = []
+  hospitalBed : HospitalBeds[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute ,private http : HttpClient, private doctorService: DoctorService, private patientService: PatientService) {
 
@@ -32,8 +32,21 @@ export class DoctorComponent implements OnInit {
         alert( "Invalid " );
       } else if (response.code == 200 && response.data != null) {
         this.hospitalId = response.data.hospitalId;
-        this.hospitalName = response.data.hospitalName
-        this.hospitalBed = response.data.hospitalBeds
+        this.hospitalName = response.data.hospitalName;
+
+        for(var i=0;i<(response.data.hospitalBeds).length;i++){
+          if((response.data.hospitalBeds)[i].admitted == true){
+
+            this.hospitalBed.push(new HospitalBeds((response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId  ,'admitted', (response.data.hospitalBeds)[i].discharged));
+          }else{
+            this.hospitalBed.push(new HospitalBeds((response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, ' ', (response.data.hospitalBeds)[i].discharged));
+          }
+        }
+       /* (response.data.hospitalBeds).forEach(function (value) {
+          console.log(value.admitted)
+
+        });
+        //this.hospitalBed = response.data.hospitalBeds*/
       }
     });
   }
@@ -42,7 +55,7 @@ export class DoctorComponent implements OnInit {
     console.log(this.hospitalBed.findIndex(x => x.patientId ===bed.patientId))
       this.patientService.update(patientId, this.doctorId, 'admit').subscribe((resp)=>{
         if(resp.data==true){
-          this.hospitalBed[this.hospitalBed.findIndex(x => x.patientId ===bed.patientId)].admitted=resp.data
+          this.hospitalBed[this.hospitalBed.findIndex(x => x.patientId ===bed.patientId)].admitted='admitted'
         }
       })
 
@@ -57,6 +70,11 @@ export class DoctorComponent implements OnInit {
 
   patientView(patientId){
       this.patientService.patientGet(patientId).subscribe((resp)=>{
+        this.router.navigate( ['/patient'], {
+          queryParams:{patientId: resp.data.patientId, name: resp.data.firstName, age:resp.data.age, district: resp.data.district,
+              contactNo: resp.data.contactNo, admit_date:resp.data.admitDate, admitted_by:resp.data.admittedBy}
+        });
+
         console.log(resp.data)
       })
 }
