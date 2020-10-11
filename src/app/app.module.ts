@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PatientResponseComponent } from './views/patient-response/patient-response.component';
 import {AppInterceptor} from "./services/app-interceptor.service";
+import { PatientComponent } from './views/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {AppInterceptor} from "./services/app-interceptor.service";
     LoginComponent,
     MohComponent,
     PatientRegComponent,
-    PatientResponseComponent
+    PatientResponseComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,

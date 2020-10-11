@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseDto} from "../dto/response-dto";
 import {TOKEN_KEY} from "../constants/constant";
+import {HospitalResponse} from "../dto/hospital-response";
 
 @Injectable({
   providedIn: 'root'

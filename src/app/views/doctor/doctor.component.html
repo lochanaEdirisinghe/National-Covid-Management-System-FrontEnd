@@ -3,38 +3,29 @@
     <div class="col-12 shadow-lg pt-5 pb-5 mt-3">
       <h1>Hospital : {{hospitalId}} , {{hospitalName}} </h1>
 
-    </div>
 
-    <table class="table">
-      <thead class="thead-dark">
-      <tr>
-        <th scope="col">bedNo</th>
-        <th scope="col">patientId</th>
-        <th scope="col">isAdmitted</th>
-        <th scope="col">isDischarged</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      </tbody>
-    </table>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">BedNo</th>
+          <th scope="col">PatientId</th>
+          <th scope="col">IsAdmitted</th>
+          <th scope="col">IsDischarged</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of hospitalBed" (click)="patientView(c.patientId)">
+          <td>{{c.bedId}} </td>
+          <td>{{c.patientId}}</td>
+          <td>{{c.admitted}} <button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': c.admitted, 'btn btn-primary':true}"  >Admit</button> </td>
+          <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': c.discharged, 'btn btn-danger':true}">Discharged</button></td>
+        </tr>
+
+        </tbody>
+      </table>
+
+
+    </div>
 
   </div>
 </section>

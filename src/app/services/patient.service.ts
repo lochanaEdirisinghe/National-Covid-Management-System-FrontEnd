@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {ResponseDto} from "../dto/response-dto";
@@ -16,4 +16,14 @@ export class PatientService {
   register(patient): Observable<ResponseDto > {
     return this.http.post<ResponseDto>(this.url, patient);
   }
+
+  update(patientId, doctorId, doctorRole): Observable<ResponseDto > {
+    //const opts = { params: new HttpParams({fromString: "?patientId="+patientId+"&doctorId="+doctorId+"&doctorRole="+doctorRole}) };
+    return this.http.put<ResponseDto>(this.url+"?patientId="+patientId+"&doctorId="+doctorId+"&doctorRole="+doctorRole, null);
+  }
+
+  patientGet(patientId):Observable<ResponseDto>{
+    return this.http.get<ResponseDto>(this.url+"/id?patientId="+patientId);
+  }
+
 }
