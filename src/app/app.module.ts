@@ -17,6 +17,7 @@ import {AppInterceptor} from "./services/app-interceptor.service";
 import { PatientComponent } from './views/patient/patient.component';
 import { HospitalAddComponent } from './views/hospital-add/hospital-add.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { HospitalAddComponent } from './views/hospital-add/hospital-add.componen
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
