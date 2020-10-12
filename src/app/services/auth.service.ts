@@ -22,6 +22,7 @@ export class AuthService {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_DTO);
     localStorage.removeItem(ROLE);
+    localStorage.removeItem('doctorId')
 
     this.router.navigate(["/login"]);
   }

@@ -6,8 +6,8 @@ import {PatientRegComponent} from "./views/patient-reg/patient-reg.component";
 import {DoctorComponent} from "./views/doctor/doctor.component";
 import {MohComponent} from "./views/moh/moh.component";
 import {PatientResponseComponent} from "./views/patient-response/patient-response.component";
-import {AuthGuard} from "./services/auth-guard.service";
-import {AuthGuard2} from "./services/authguard2.service";
+import {AuthGuard} from "./services/auth-guardDoctor.service";
+import {AuthGuard2} from "./services/auth-guardMoh.service";
 import {PatientComponent} from "./views/patient/patient.component";
 import {HospitalAddComponent} from "./views/hospital-add/hospital-add.component";
 

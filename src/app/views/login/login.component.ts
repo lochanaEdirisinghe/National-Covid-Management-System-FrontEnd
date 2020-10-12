@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
          //navigate to views
         if(response.data.role == 'doctor'){
+          localStorage.setItem("doctorId", this.userId.value);
           this.router.navigate( ['/doctor'], {
             queryParams:{doctorId: this.userId.value}
           });

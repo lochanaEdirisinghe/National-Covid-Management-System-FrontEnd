@@ -14,8 +14,16 @@ export class AppInterceptor implements HttpInterceptor{
 
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let token = localStorage.getItem(TOKEN_KEY);
 
+    if(request.url.indexOf('/patient') >= 0){
+      return next.handle(request);
+    }
+
+    if(request.url.indexOf('/auth') >= 0){
+      return next.handle(request);
+    }
+
+    let token = localStorage.getItem(TOKEN_KEY);
     let newRequest = request.clone({headers: new HttpHeaders("Authorization:Bearer " + token)});
     console.log(newRequest)
 

@@ -5,6 +5,7 @@ import {DoctorService} from "../../services/doctor.service";
 import {HospitalBeds} from "../../dto/hospital-beds";
 import {of} from "rxjs";
 import {PatientService} from "../../services/patient.service";
+import {TOKEN_KEY} from "../../constants/constant";
 
 @Component({
   selector: 'app-doctor',
@@ -19,14 +20,10 @@ export class DoctorComponent implements OnInit {
 
   hospitalBed : HospitalBeds[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute ,private http : HttpClient, private doctorService: DoctorService, private patientService: PatientService) {
-
-    this.route.queryParamMap.subscribe((value)=> {
-      this.doctorId=value.get('doctorId')
-    })
-  }
+  constructor(private router: Router, private route: ActivatedRoute ,private http : HttpClient, private doctorService: DoctorService, private patientService: PatientService) {}
 
   ngOnInit(): void {
+    this.doctorId=localStorage.getItem("doctorId");
     this.doctorService.getBedDetails( this.doctorId ).subscribe( (response) => {
       if (response.code != 200) {
         alert( "Invalid " );

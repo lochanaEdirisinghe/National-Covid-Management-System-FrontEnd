@@ -3,6 +3,7 @@ import {MohService} from "../../services/moh.service";
 import {Queue} from "../../dto/queue";
 import {Count} from "../../dto/count";
 import {Router} from "@angular/router";
+import {PatientService} from "../../services/patient.service";
 
 @Component({
   selector: 'app-moh',
@@ -14,7 +15,7 @@ export class MohComponent implements OnInit {
   queue : Queue[]=[]
   availableBedCounts: Count[]=[]
 
-  constructor(private mohService:MohService, private router:Router) { }
+  constructor(private mohService:MohService, private router:Router , private patientService: PatientService) { }
 
   ngOnInit(): void {
 
@@ -31,6 +32,17 @@ export class MohComponent implements OnInit {
 
   hospital(){
     this.router.navigate(['/addhospital'])
+  }
+
+  viewPatient(patientId){
+    this.patientService.patientGet(patientId).subscribe((resp)=>{
+      this.router.navigate( ['/patient'], {
+        queryParams:{patientId: resp.data.patientId, name: resp.data.firstName, age:resp.data.age, district: resp.data.district,
+          contactNo: resp.data.contactNo, admit_date:resp.data.admitDate, admitted_by:resp.data.admittedBy}
+      });
+
+      console.log(resp.data)
+    })
   }
 
 }
