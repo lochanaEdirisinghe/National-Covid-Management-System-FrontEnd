@@ -31,25 +31,27 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.form.value).subscribe((response) => {
        if (response.code == 401) {
-        alert("Username And Password is Incorrect");
+        alert("Invalid Username And Password.. Try again!!");
+        console.log(response.code)
       } else if (response.code == 200) {
-        //store user and token in the browser
-        localStorage.setItem(TOKEN_KEY, response.message);
-        localStorage.setItem(USER_DTO, JSON.stringify(response.data));
-        localStorage.setItem(ROLE, response.data.role);
+         //store user and token in the browser
+         localStorage.setItem( TOKEN_KEY, response.message );
+         localStorage.setItem( USER_DTO, JSON.stringify( response.data ) );
+         localStorage.setItem( ROLE, response.data.role );
 
          //navigate to views
-        if(response.data.role == 'doctor'){
-          localStorage.setItem("doctorId", this.userId.value);
-          this.router.navigate( ['/doctor'], {
-            queryParams:{doctorId: this.userId.value}
-          });
-        }else if(response.data.role == 'moh'){
-          this.router.navigate( ['/moh']);
-        }
-      }
+         if (response.data.role == 'doctor') {
+           localStorage.setItem( "doctorId", this.userId.value );
+           this.router.navigate( ['/doctor'], {
+             queryParams: {doctorId: this.userId.value}
+           } );
+         } else if (response.data.role == 'moh') {
+           this.router.navigate( ['/moh'] );
+         }
+       }
 
-    });
+    },  (error) => (
+      alert("Invalid Username And Password.. Try again!!")));
   }
 
 }

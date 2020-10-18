@@ -10,6 +10,7 @@ import {AuthGuard} from "./services/auth-guardDoctor.service";
 import {AuthGuard2} from "./services/auth-guardMoh.service";
 import {PatientComponent} from "./views/patient/patient.component";
 import {HospitalAddComponent} from "./views/hospital-add/hospital-add.component";
+import {PatientStaticsComponent} from "./views/patient-statics/patient-statics.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,9 @@ const routes: Routes = [
   },
   {
     path : 'addhospital', component : HospitalAddComponent
+  },
+  {
+    path : 'statics/:id', component : PatientStaticsComponent
   },
   {
     path : 'patientResponse', component : PatientResponseComponent

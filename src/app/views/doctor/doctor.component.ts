@@ -39,11 +39,6 @@ export class DoctorComponent implements OnInit {
             this.hospitalBed.push(new HospitalBeds((response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, ' ', (response.data.hospitalBeds)[i].discharged));
           }
         }
-       /* (response.data.hospitalBeds).forEach(function (value) {
-          console.log(value.admitted)
-
-        });
-        //this.hospitalBed = response.data.hospitalBeds*/
       }
     });
   }

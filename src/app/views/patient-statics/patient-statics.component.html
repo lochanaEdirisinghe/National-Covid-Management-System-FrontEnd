@@ -1,0 +1,45 @@
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 shadow-sm pt-1 pb-5 mt-3 justify-content-center" *ngIf="hospital" style="background-color: white">
+      <h1>Total Patients(Hospital Level)</h1>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">HospitalId</th>
+          <th scope="col">Hospital</th>
+          <th scope="col">Patient Count</th>
+          <th scope="col">District</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of hospitalStatics">
+          <td>{{b.hospitalId}}</td>
+          <td>{{b.hospitalName}}</td>
+          <td>{{b.count}}</td>
+          <td>{{b.district}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-8 shadow-sm pt-1 pb-5 mt-3 justify-content-center" *ngIf="disctict" style="background-color: white">
+      <h1>Total Patients(District Level)</h1>
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">District</th>
+          <th scope="col">Patient Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of districtStatics">
+          <td>{{b.district}}</td>
+          <td>{{b.count}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

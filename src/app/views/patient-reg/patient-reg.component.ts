@@ -58,10 +58,12 @@ export class PatientRegComponent implements OnInit {
 
   register(){
     this.patientService.register(this.form.value).subscribe((response) => {
-      if (response.code != 200) {
-        alert( "Invalid Registration" );
+      if (response.data==null) {
+        alert( "Invalid location coordinates" );
+        console.log("Invalid location coordinates")
 
       }else if (response.code == 200 && response.data != null ) {
+        alert("patient is added!!")
         this.router.navigate( ['/patientResponse'], {
           queryParams :{
             serialNo: response.data.serialNo,
@@ -71,7 +73,9 @@ export class PatientRegComponent implements OnInit {
           }
         });
       }
-    });
+    }, (error) =>{
+      alert("Invalid Registration")
+    } );
     this.form.reset()
   }
 

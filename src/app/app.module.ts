@@ -16,6 +16,8 @@ import { PatientResponseComponent } from './views/patient-response/patient-respo
 import {AppInterceptor} from "./services/app-interceptor.service";
 import { PatientComponent } from './views/patient/patient.component';
 import { HospitalAddComponent } from './views/hospital-add/hospital-add.component';
+import { PatientStaticsComponent } from './views/patient-statics/patient-statics.component';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { HospitalAddComponent } from './views/hospital-add/hospital-add.componen
     PatientRegComponent,
     PatientResponseComponent,
     PatientComponent,
-    HospitalAddComponent
+    HospitalAddComponent,
+    PatientStaticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +43,9 @@ import { HospitalAddComponent } from './views/hospital-add/hospital-add.componen
     ReactiveFormsModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true},
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

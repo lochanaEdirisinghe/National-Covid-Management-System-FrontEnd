@@ -19,7 +19,6 @@ export class PatientService {
   }
 
   update(patientId, doctorId, doctorRole): Observable<ResponseDto> {
-    //const opts = { params: new HttpParams({fromString: "?patientId="+patientId+"&doctorId="+doctorId+"&doctorRole="+doctorRole}) };
     return this.http.put<ResponseDto>( this.url + "?patientId=" + patientId + "&doctorId=" + doctorId + "&doctorRole=" + doctorRole, null );
   }
 

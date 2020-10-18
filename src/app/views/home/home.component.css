@@ -1,0 +1,38 @@
+/*.bg{
+   position: relative;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}*/
+/*.bg ::before {
+  content: "";
+  background-image: url(~src/app/images/4198555.jpg);
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  height: 550px;
+
+  !* position: relative;
+   height: 80%;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;*!
+}*/
+
+/*.bg::before {
+  content: "";
+  background-image: url(~src/app/images/4198555.jpg);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+}*/

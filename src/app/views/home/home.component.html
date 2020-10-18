@@ -1,36 +1,19 @@
-<div class="jumbotron">
-    <div class="row justify-content-center">
-      <div class="col-6 shadow-sm pt-1 pb-5 mt-3">
-        <h1>Total Patients(Country Level)  : {{totalCount}}</h1>
-        <h3>Active Cases  : {{activecases}}</h3>
-        <h3>Discharged Patients  : {{dischargedcount}}</h3>
-        <div class="text-center" style="margin-top: 30px">
-          <img src="https://cdn.shopify.com/s/files/1/0009/6593/5164/files/COVID19-INFO_480x480.jpg?v=1587833998" class="rounded" alt="...">
-        </div>
-
-      </div>
-      <div class="col-6 shadow-sm pt-1 pb-5 mt-3">
-        <h1>Total Patients(Hospital Level)</h1>
-
-        <table class="table table-hover">
-          <thead class="thead-dark">
-          <tr>
-            <th scope="col">HospitalId</th>
-            <th scope="col">HospitalName</th>
-            <th scope="col">Patient Count</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let b of patientCount">
-            <td>{{b.hospitalId}}</td>
-            <td>{{b.hospitalName}}</td>
-            <td>{{b.count}}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="jumbotron" style="background:transparent !important; color: white">
+  <div class="row justify-content-center">
+    <div class="col-6 pt-1 pb-5 mt-3" style="text-align: center">
+      <h1 style="text-shadow: 4px 4px 4px #000000; margin-top: 180px">NATIONAL COVID MANAGEMENT</h1>
+      <h1 style="text-shadow: 4px 4px 4px #000000;">SYSTEM</h1>
     </div>
-
-
-
+    <div class="col-6 pt-1 pb-5 mt-3" style="text-align: center; display">
+      <br>
+      <h2>Total Covid-19 Patients(Country Level) : {{totalCount}}</h2>
+      <h4>Active Cases : {{activecases}}</h4>
+      <h4>Discharged Patients : {{dischargedcount}}</h4>
+      <br>
+      <button routerLink="/statics/hospital" style="width: 300px; margin-left: 170px" class="btn btn-primary btn-lg btn-block">Hospital Level</button>
+      <br>
+      <button routerLink="/statics/district" style="width: 300px ;  margin-left: 170px" class="btn btn-primary btn-lg btn-block">District Level
+      </button>
+    </div>
+  </div>
 </div>

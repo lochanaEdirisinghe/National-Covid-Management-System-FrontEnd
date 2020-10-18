@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   activecases;
   dischargedcount;
 
-  patientCount: Count[]=[]
 
   constructor(private patientService: PatientService) { }
 
@@ -22,11 +21,6 @@ export class HomeComponent implements OnInit {
       this.activecases=resp.data.activecount;
       this.dischargedcount = resp.data.discharged
       this.totalCount = (resp.data.activecount + resp.data.discharged);
-      console.log(resp.data)
-    })
-
-    this.patientService.getHospitalPatientCount().subscribe((resp)=>{
-      this.patientCount=resp.data;
       console.log(resp.data)
     })
   }

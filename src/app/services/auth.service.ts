@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {ResponseDto} from "../dto/response-dto";
 import {ROLE, TOKEN_KEY, USER_DTO} from "../constants/constant";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
