@@ -4,5 +4,11 @@ body{
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)),url(~src/app/images/Coronavirus_web_1280x589.png) ;
   background-size: cover;
   background-attachment: fixed;
-
+}
+.boxstyle{
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 0 4px 4px #888888 !important;
+  padding: 10px;
+  margin-right: 10px;
 }

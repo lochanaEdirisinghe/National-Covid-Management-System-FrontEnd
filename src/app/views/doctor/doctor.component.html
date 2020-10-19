@@ -1,6 +1,6 @@
 <section class="container">
   <div class="row justify-content-center">
-    <div class="col-12 shadow-lg pt-5 pb-5 mt-3" style="background-color: white">
+    <div class="col-12 shadow-lg pt-5 pb-5 mt-3 boxstyle">
       <h1>Hospital : {{hospitalId}} , {{hospitalName}} </h1>
       <h3>Doctor : {{doctorId}}</h3>
 
@@ -17,7 +17,7 @@
         <tr *ngFor="let c of hospitalBed">
           <td>&nbsp;&nbsp;{{c.bedId}}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary btn-sm" (click)="patientView(c.patientId)">View</button></td>
           <td>{{c.patientId}}</td>
-          <td>{{c.admitted}} &nbsp; &nbsp;&nbsp;&nbsp;<button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': ((c.admitted)=='admitted'), 'btn btn-outline-primary btn-sm':true}"  >Admit</button> </td>
+          <td>&nbsp;{{c.admitted}}<!--<button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': ((c.admitted)=='admitted'), 'btn btn-outline-primary btn-sm':true}">Admit</button> --></td>
           <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': c.discharged, 'btn btn-outline-danger btn-sm':true}">Discharged</button></td>
         </tr>
 

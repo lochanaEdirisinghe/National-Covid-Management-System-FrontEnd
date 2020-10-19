@@ -38,14 +38,9 @@ export class MohComponent implements OnInit {
   }
 
   viewPatient(patientId){
-    this.patientService.patientGet(patientId).subscribe((resp)=>{
-      this.router.navigate( ['/patient'], {
-        queryParams:{patientId: resp.data.patientId, name: resp.data.firstName, age:resp.data.age, district: resp.data.district,
-          contactNo: resp.data.contactNo, admit_date:resp.data.admitDate, admitted_by:resp.data.admittedBy}
-      });
-
-      console.log(resp.data)
-    })
+    this.router.navigate( ['/patient'], {
+      queryParams:{patientId:patientId, doctorId:"moh"}
+    });
   }
 
 }

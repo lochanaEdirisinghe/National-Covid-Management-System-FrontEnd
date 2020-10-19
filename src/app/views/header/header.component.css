@@ -46,8 +46,14 @@ header>nav>ul>li{
   cursor: pointer;
   outline: none;
 }
+header>nav>ul>li:hover{
+ background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+}
 
 .active{
-  color: red!important;
+  color: #7abaff!important;
 }
 

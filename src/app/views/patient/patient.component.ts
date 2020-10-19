@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {SharedServiceService} from "../../services/shared-service.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {PatientService} from "../../services/patient.service";
 
-@Component({
+
+@Component( {
   selector: 'app-patient',
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
-})
+} )
 export class PatientComponent implements OnInit {
 
   name
@@ -16,30 +18,59 @@ export class PatientComponent implements OnInit {
   contactNo
   admit_date
   admitted_by
+  visible;
+  doctorId;
+  sLevel;
 
-  constructor(private route:ActivatedRoute) {
+  form = new FormGroup( {
+    slevel: new FormControl( '', [Validators.required] ),
+  } );
+
+  constructor(private route: ActivatedRoute, private patientService: PatientService) {
     this.route.queryParamMap.subscribe((value)=> {
       this.patientId=value.get('patientId')
-      this.name=value.get('name')
-      this.age=value.get('age')
-      this.district=value.get('district')
-      this.contactNo=value.get('contactNo')
-      if(value.get('admit_date')!=null){
-        this.admit_date=value.get('admit_date')
-        this.admitted_by=value.get('admitted_by')
-      }else {
-        this.admit_date="no"
-        this.admitted_by="no"
-      }
-
+      this.doctorId=value.get('doctorId')
     })
   }
 
 
   ngOnInit(): void {
+    this.patientService.patientGet( this.patientId).subscribe( (resp) => {
+      console.log( resp.data )
+      this.age=resp.data.age;
+      this.district=resp.data.district;
+      this.contactNo=resp.data.contactNo;
+      this.sLevel=resp.data.severityLevel
+      if(this.doctorId=="moh") {
+        this.admit_date = "no"
+        this.admitted_by = "no"
+        this.sLevel = "no"
+        this.visible = false
+      }else if(resp.data.admitDate!=null){
+        this.admit_date=resp.data.admitDate
+        this.admitted_by=resp.data.admittedBy
+        this.visible=false
+      } else {
+        this.admit_date="no"
+        this.admitted_by="no"
+        this.sLevel="no"
+        this.visible=true
+      }
 
+    } )
   }
 
+  get slevel(){
+    return this.form.get('slevel')
+  }
+
+  admit() {
+    this.patientService.update( this.patientId, this.doctorId, this.form.get('slevel').value, 'admit' ).subscribe( (resp) => {
+      if (resp.data == true) {
+        this.ngOnInit();
+      }
+    } )
+  }
 
 
 }

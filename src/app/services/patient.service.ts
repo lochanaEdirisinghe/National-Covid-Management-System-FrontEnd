@@ -18,8 +18,9 @@ export class PatientService {
     return this.http.post<ResponseDto>( this.url, patient );
   }
 
-  update(patientId, doctorId, doctorRole): Observable<ResponseDto> {
-    return this.http.put<ResponseDto>( this.url + "?patientId=" + patientId + "&doctorId=" + doctorId + "&doctorRole=" + doctorRole, null );
+  update(patientId, doctorId, slevel, doctorRole): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>( this.url + "?patientId=" + patientId + "&doctorId=" + doctorId + "&doctorRole=" + doctorRole + "&slevel=" +slevel , null );
+
   }
 
   patientGet(patientId): Observable<ResponseDto> {
