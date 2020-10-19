@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {SharedServiceService} from "../../services/shared-service.service";
 
 @Component({
   selector: 'app-patient',

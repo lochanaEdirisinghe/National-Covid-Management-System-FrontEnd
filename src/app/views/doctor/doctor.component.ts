@@ -6,6 +6,7 @@ import {HospitalBeds} from "../../dto/hospital-beds";
 import {of} from "rxjs";
 import {PatientService} from "../../services/patient.service";
 import {TOKEN_KEY} from "../../constants/constant";
+import {SharedServiceService} from "../../services/shared-service.service";
 
 @Component({
   selector: 'app-doctor',
@@ -20,7 +21,7 @@ export class DoctorComponent implements OnInit {
 
   hospitalBed : HospitalBeds[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute ,private http : HttpClient, private doctorService: DoctorService, private patientService: PatientService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private sharedService: SharedServiceService , private doctorService: DoctorService, private patientService: PatientService) {}
 
   ngOnInit(): void {
     this.doctorId=localStorage.getItem("doctorId");
@@ -40,7 +41,9 @@ export class DoctorComponent implements OnInit {
           }
         }
       }
-    });
+    })
+
+    this.sharedService.sendClickEvent();
   }
 
   isadmitted(bed, patientId){

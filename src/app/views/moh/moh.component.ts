@@ -4,6 +4,7 @@ import {Queue} from "../../dto/queue";
 import {Count} from "../../dto/count";
 import {Router} from "@angular/router";
 import {PatientService} from "../../services/patient.service";
+import {SharedServiceService} from "../../services/shared-service.service";
 
 @Component({
   selector: 'app-moh',
@@ -15,7 +16,9 @@ export class MohComponent implements OnInit {
   queue : Queue[]=[]
   availableBedCounts: Count[]=[]
 
-  constructor(private mohService:MohService, private router:Router , private patientService: PatientService) { }
+  constructor(private mohService:MohService, private router:Router , private patientService: PatientService, private sharedService: SharedServiceService) {
+    this.sharedService.sendClickEvent();
+  }
 
   ngOnInit(): void {
 
