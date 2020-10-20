@@ -28,7 +28,7 @@ export class DoctorComponent implements OnInit {
     this.doctorId = localStorage.getItem( "doctorId" );
     this.doctorService.getBedDetails( this.doctorId ).subscribe( (response) => {
       if (response.code != 200) {
-        alert( "Invalid " );
+        alert( "Invalid");
       } else if (response.code == 200 && response.data != null) {
         this.hospitalId = response.data.hospitalId;
         this.hospitalName = response.data.hospitalName;
@@ -36,9 +36,9 @@ export class DoctorComponent implements OnInit {
         for (var i = 0; i < (response.data.hospitalBeds).length; i++) {
           if ((response.data.hospitalBeds)[i].admitted == true) {
 
-            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'admitted', (response.data.hospitalBeds)[i].discharged ) );
+            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'admitted', true/*(response.data.hospitalBeds)[i].discharged*/ ) );
           } else {
-            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'notAdmited ', (response.data.hospitalBeds)[i].discharged ) );
+            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'notAdmited ', false) );
           }
         }
       }

@@ -15,7 +15,16 @@ export class DoctorService {
   url = "http://localhost:8080/api/v1/doctor"
 
 
+
   getBedDetails(doctorId): Observable<ResponseDto> {
-    return this.http.get<ResponseDto>(this.url + "?doctorId=" + doctorId );
+    return this.http.get<ResponseDto>(this.url + "/id?doctorId=" + doctorId );
+  }
+
+  checkIsdirector(doctorId):Observable<ResponseDto> {
+    return this.http.get<ResponseDto>(this.url + "/check?doctorId=" + doctorId );
+  }
+
+  updateDoctor(hospitalId, doctorId): Observable<ResponseDto> {
+    return this.http.put<ResponseDto>(this.url + "?doctorId=" + doctorId +"&hospitalId="+hospitalId, null);
   }
 }

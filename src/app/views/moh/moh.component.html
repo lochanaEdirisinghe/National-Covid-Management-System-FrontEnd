@@ -1,6 +1,6 @@
 <section class="container-fluid">
 
-  <button type="button" class="btn btn-primary btn-block btn-group-small " style="outline: none ; width: 300px; height: 50px; margin-left: 500px; margin-top: 50px" (click)="hospital()">Add new hospital</button>
+  <button type="button" *ngIf="visibleButton" class="btn btn-primary btn-block btn-group-small " style="outline: none ; width: 300px; height: 50px; margin-left: 500px; margin-top: 50px" (click)="hospital()">Add new hospital</button>
 
   <br>
   <div class="row justify-content-center ">
@@ -21,23 +21,24 @@
         </tr>
         </tbody>
       </table>
+      <br>
+      <!--<p style="color: red" *ngIf="visibleButton">Queue is full.. Please add a new hospital..!!</p>-->
     </div>
     <div class="col-5 shadow-sm pt-5 pb-5 mt-3 boxstyle" style="background-color: white">
-      <h1>All bed Details </h1>
+      <h1>Hospital Count </h1>
 
       <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
-          <th scope="col">HospitalId</th>
-          <th scope="col">HospitalName</th>
-          <th scope="col">Available Bed Count</th>
+          <th scope="col">District</th>
+          <th scope="col">No of Hospitals</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let b of availableBedCounts">
-          <td>{{b.hospitalId}}</td>
-          <td>{{b.hospitalName}}</td>
+        <tr *ngFor="let b of districtHospitalcount">
+          <td>{{b.district}}</td>
           <td>{{b.count}}</td>
+
         </tr>
         </tbody>
       </table>

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../services/patient.service";
+import {DoctorService} from "../../services/doctor.service";
 
 
 @Component( {
@@ -26,7 +27,7 @@ export class PatientComponent implements OnInit {
     slevel: new FormControl( '', [Validators.required] ),
   } );
 
-  constructor(private route: ActivatedRoute, private patientService: PatientService) {
+  constructor(private route: ActivatedRoute, private patientService: PatientService, private doctorService: DoctorService) {
     this.route.queryParamMap.subscribe((value)=> {
       this.patientId=value.get('patientId')
       this.doctorId=value.get('doctorId')
@@ -65,11 +66,18 @@ export class PatientComponent implements OnInit {
   }
 
   admit() {
-    this.patientService.update( this.patientId, this.doctorId, this.form.get('slevel').value, 'admit' ).subscribe( (resp) => {
+    this.doctorService.checkIsdirector(this.doctorId).subscribe( (resp) => {
       if (resp.data == true) {
-        this.ngOnInit();
+        this.patientService.update( this.patientId, this.doctorId, this.form.get('slevel').value, 'admit' ).subscribe( (resp) => {
+          if (resp.data == true) {
+            this.ngOnInit();
+          }
+        } )
+      }else {
+        alert("You are not a director!!!")
       }
     } )
+
   }
 
 

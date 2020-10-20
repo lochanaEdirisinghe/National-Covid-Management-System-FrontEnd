@@ -23,4 +23,8 @@ export class MohService {
   addHospital(hospital): Observable<ResponseDto > {
     return this.http.post<ResponseDto>(this.url, hospital);
   }
+
+  updateQueue(hospitalId):Observable<ResponseDto>{
+    return this.http.put<ResponseDto>(this.url+"?hospitalId="+hospitalId, null);
+  }
 }

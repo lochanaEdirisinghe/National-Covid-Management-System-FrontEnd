@@ -18,7 +18,7 @@
           <td>&nbsp;&nbsp;{{c.bedId}}&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary btn-sm" (click)="patientView(c.patientId)">View</button></td>
           <td>{{c.patientId}}</td>
           <td>&nbsp;{{c.admitted}}<!--<button type="button" (click)="isadmitted(c, c.patientId)" [ngClass]="{'visibleclass': ((c.admitted)=='admitted'), 'btn btn-outline-primary btn-sm':true}">Admit</button> --></td>
-          <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': c.discharged, 'btn btn-outline-danger btn-sm':true}">Discharged</button></td>
+          <td><button type="button"  (click)="isdischarged(c, c.patientId)" [ngClass]="{'visibleclass': !c.discharged, 'btn btn-outline-danger btn-sm':true}">Discharged</button></td>
         </tr>
 
         </tbody>
