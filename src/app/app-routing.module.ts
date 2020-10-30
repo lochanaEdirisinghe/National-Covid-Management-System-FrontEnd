@@ -11,6 +11,7 @@ import {AuthGuard2} from "./services/auth-guardMoh.service";
 import {PatientComponent} from "./views/patient/patient.component";
 import {HospitalAddComponent} from "./views/hospital-add/hospital-add.component";
 import {PatientStaticsComponent} from "./views/patient-statics/patient-statics.component";
+import {PatientListComponent} from "./views/patient-list/patient-list.component";
 
 
 const routes: Routes = [
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path : 'moh', component : MohComponent, canActivate: [AuthGuard2]
+  },
+  {
+    path: "patientList", component: PatientListComponent
   },
   {
     path : 'addhospital', component : HospitalAddComponent

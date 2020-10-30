@@ -11,9 +11,17 @@ import {ROLE, TOKEN_KEY, USER_DTO} from "../../constants/constant";
 })
 export class LoginComponent implements OnInit {
 
+  logAdmin=false;
+  logPatient=false;
+  logButtons=true;
   form = new FormGroup({
     userId: new FormControl('', [Validators.required, Validators.minLength(4)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
+
+  form2 =new FormGroup({
+    pid: new FormControl('', [Validators.required]),
+
   });
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -28,7 +36,23 @@ export class LoginComponent implements OnInit {
     return this.form.get('password')
   }
 
-  login() {
+  get pid(){
+    return this.form2.get('pid')
+  }
+
+  loginAdmin1(){
+    this.logAdmin=true;
+    this.logPatient=false;
+    this.logButtons=false;
+  }
+
+  loginPatient1(){
+    this.logPatient=true;
+    this.logAdmin=false;
+    this.logButtons=false;
+  }
+
+  loginAdmin2() {
     this.authService.login(this.form.value).subscribe((response) => {
        if (response.code == 401) {
         alert("Invalid Username And Password.. Try again!!");
@@ -52,6 +76,12 @@ export class LoginComponent implements OnInit {
 
     },  (error) => (
       alert("Invalid Username And Password.. Try again!!")));
+  }
+
+  loginPatient2(){
+    this.router.navigate( ['/patient'], {
+      queryParams: {patientId: this.pid.value, doctorId: null}
+    } );
   }
 
 }

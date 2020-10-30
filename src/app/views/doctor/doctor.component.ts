@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {NavigationExtras, Router, ActivatedRoute} from "@angular/router";
 import {DoctorService} from "../../services/doctor.service";
@@ -18,6 +18,8 @@ export class DoctorComponent implements OnInit {
   doctorId;
   hospitalId;
   hospitalName;
+  isdirector:boolean;
+  @Output() getCurrentUser: EventEmitter<any> = new EventEmitter();
 
   hospitalBed: HospitalBeds[] = [];
 
@@ -26,6 +28,9 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorId = localStorage.getItem( "doctorId" );
+    this.doctorService.checkIsdirector(this.doctorId).subscribe((resp)=>{
+      this.isdirector=resp.data;
+    });
     this.doctorService.getBedDetails( this.doctorId ).subscribe( (response) => {
       if (response.code != 200) {
         alert( "Invalid");
@@ -43,8 +48,10 @@ export class DoctorComponent implements OnInit {
         }
       }
     } )
-
     this.sharedService.sendClickEvent();
+    this.sharedService.toggle(this.doctorId);
+
+
   }
 
 

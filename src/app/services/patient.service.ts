@@ -27,6 +27,10 @@ export class PatientService {
     return this.http.get<ResponseDto>( this.url + "/id?patientId=" + patientId );
   }
 
+  patientGetAll(): Observable<ResponseDto> {
+    return this.http.get<ResponseDto>( this.url + "/" );
+  }
+
   getTotalCount(): Observable<ResponseDto> {
     return this.http.get<ResponseDto>( this.url + "/totalcount" );
   }

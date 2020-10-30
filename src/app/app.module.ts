@@ -17,6 +17,7 @@ import {AppInterceptor} from "./services/app-interceptor.service";
 import { PatientComponent } from './views/patient/patient.component';
 import { HospitalAddComponent } from './views/hospital-add/hospital-add.component';
 import { PatientStaticsComponent } from './views/patient-statics/patient-statics.component';
+import { PatientListComponent } from './views/patient-list/patient-list.component';
 
 
 
@@ -34,6 +35,7 @@ import { PatientStaticsComponent } from './views/patient-statics/patient-statics
     PatientComponent,
     HospitalAddComponent,
     PatientStaticsComponent,
+    PatientListComponent,
   ],
   imports: [
     BrowserModule,

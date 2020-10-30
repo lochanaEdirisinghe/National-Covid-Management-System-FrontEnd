@@ -22,10 +22,7 @@ export class AppInterceptor implements HttpInterceptor{
 
   constructor(private authService: AuthService) { }
 
-
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-
     if(request.url.indexOf('/patient') >= 0){
       this.newRequest=request
     }else if(request.url.indexOf('/auth') >= 0){

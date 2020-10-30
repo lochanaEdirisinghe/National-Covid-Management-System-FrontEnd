@@ -1,0 +1,31 @@
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 shadow-sm pt-1 pb-5 mt-3 justify-content-center boxstyle">
+      <h1>Patient List(Active Patients)</h1>
+
+      <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">PatientId</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">District</th>
+          <th scope="col">ContactNo</th>
+          <th scope="col">Hospital</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of patientList">
+          <td>{{b.patientId}}</td>
+          <td>{{b.firstName}}</td>
+          <td>{{b.age}}</td>
+          <td>{{b.district}}</td>
+          <td>{{b.contactNo}}</td>
+          <td>{{b.hospitalId}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

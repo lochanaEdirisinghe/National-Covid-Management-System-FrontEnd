@@ -16,7 +16,7 @@ export class MohComponent implements OnInit {
 
   queue : Queue[]=[]
   hospitalDetails: Count[]=[]
-  visibleButton=true
+  visibleButton=false;
 
   districtHospitalcount: DistrictCount[] = [new DistrictCount( "District_A", 0 ),
     new DistrictCount( "District_B", 0 ),
@@ -49,6 +49,7 @@ export class MohComponent implements OnInit {
         }
       }
       console.log(resp.data)
+      this.sharedService.toggle("MoH");
     })
 
     this.mohService.getQueue().subscribe((resp)=>{
@@ -57,8 +58,6 @@ export class MohComponent implements OnInit {
         this.visibleButton=true;
       }
     })
-
-
 
   }
 
@@ -70,6 +69,10 @@ export class MohComponent implements OnInit {
     this.router.navigate( ['/patient'], {
       queryParams:{patientId:patientId, doctorId:"moh"}
     });
+  }
+
+  patientList(){
+    this.router.navigate(['/patientList'])
   }
 
 }

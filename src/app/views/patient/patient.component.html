@@ -6,12 +6,25 @@
       <div class="row">
         <div class="col-12">
           <h5>Patient Id : {{patientId}}</h5>
-          <h5>Severity Level: {{sLevel}}</h5>
           <h5>Age : {{age}}</h5>
           <h5>ContactNo : {{contactNo}}</h5>
           <h5>District : {{district}}</h5>
-          <h5>Admitted Date: {{admit_date}}</h5>
-          <h5>Admitted By : {{admitted_by}}</h5>
+          <div *ngIf="noSet">
+            <h5>Severity Level: {{sLevel}}</h5>
+            <h5>Hospital : {{hospital}}</h5>
+            <h5>BedNo : {{bedId}}</h5>
+            <h5>Admitted Date: {{admit_date}}</h5>
+            <h5>Admitted By : {{admitted_by}}</h5>
+          </div>
+
+          <br>
+          <div *ngIf="queueVisible">
+            <h4>You are still in the queue.. Please Wait!!</h4>
+            <br>
+            <h5>Queue No : {{qnumber}}</h5>
+            <br>
+            <p>More details : 0712345678</p>
+          </div>
           <br>
 
           <form [formGroup]="form" *ngIf="visible">

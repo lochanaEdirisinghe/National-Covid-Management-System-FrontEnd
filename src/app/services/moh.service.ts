@@ -25,6 +25,6 @@ export class MohService {
   }
 
   updateQueue(hospitalId):Observable<ResponseDto>{
-    return this.http.put<ResponseDto>(this.url+"?hospitalId="+hospitalId, null);
+    return this.http.options<ResponseDto>(this.url+"?hospitalId="+hospitalId);
   }
 }

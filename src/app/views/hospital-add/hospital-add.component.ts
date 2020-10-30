@@ -17,7 +17,7 @@ export class HospitalAddComponent implements OnInit {
     district: new FormControl( '', [Validators.required] ),
     locationX: new FormControl( '', [Validators.required, Validators.pattern( '[0-9]{2,3}' )] ),
     locationY: new FormControl( '', [Validators.required, Validators.pattern( '[0-9]{2,3}' )] ),
-    /*director: new FormControl( '', [Validators.required] )*/
+    director: new FormControl( '', [Validators.required] )
 
   } );
 
@@ -52,12 +52,15 @@ export class HospitalAddComponent implements OnInit {
   }
 
   addHospital(){
-    /*this.doctorService.updateDoctor(this.form.get('hospitalId').value, this.form.get('director').value).subscribe((resp)=>{
-      console.log(resp.data)
-    })*/
     this.mohService.addHospital(this.form.value).subscribe((resp)=>{
       console.log(resp.data)
       alert("New hospital is added!!")
+      if(resp.data==true) {
+        this.doctorService.updateDoctor( this.form.get( 'hospitalId' ).value, this.form.get( 'director' ).value ).subscribe( (resp) => {
+          console.log( resp.data )
+
+        } )
+      }
     })
 
    /* this.form.reset();*/
