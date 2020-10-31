@@ -108,8 +108,10 @@ export class PatientComponent implements OnInit {
 
   admit() {
     this.doctorService.checkIsdirector( this.doctorId ).subscribe( (resp) => {
+      console.log(resp)
       if (resp.data == true) {
         this.patientService.update( this.patientId, this.doctorId, this.form.get( 'slevel' ).value, 'admit' ).subscribe( (resp) => {
+          console.log(resp)
           if (resp.data == true) {
             this.ngOnInit();
           }
