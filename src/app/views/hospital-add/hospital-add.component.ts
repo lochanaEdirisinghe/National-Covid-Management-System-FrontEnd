@@ -57,7 +57,9 @@ export class HospitalAddComponent implements OnInit {
       alert("New hospital is added!!")
       if(resp.data==true) {
         this.doctorService.updateDoctor( this.form.get( 'hospitalId' ).value, this.form.get( 'director' ).value ).subscribe( (resp) => {
-          console.log( resp.data )
+          this.mohService.updateQueue(this.form.get('hospitalId').value).subscribe((resp)=>{
+            this.router.navigate( ['/moh'] );
+          })
 
         } )
       }
@@ -68,10 +70,10 @@ export class HospitalAddComponent implements OnInit {
   }
 
 
-  updateQueue(){
+ /* updateQueue(){
     this.mohService.updateQueue(this.form.get('hospitalId').value).subscribe((resp)=>{
       this.router.navigate( ['/moh'] );
     })
-  }
+  }*/
 
 }

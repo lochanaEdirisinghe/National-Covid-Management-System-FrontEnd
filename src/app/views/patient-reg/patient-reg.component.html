@@ -25,7 +25,7 @@
               <input class="form-control" formControlName="age" id="age" name="" type="text">
               <div class="alert bg-danger text-white" *ngIf="!age.valid && age.touched">
                 <div *ngIf="age.errors.required">required to fill</div>
-                <div *ngIf="age.errors.pattern">pattern is wrong</div>
+                <div *ngIf="age.errors.pattern">Wrong Age</div>
               </div>
             </div>
             <div class="form-group  pr-2 pl-2">
@@ -55,18 +55,18 @@
           <div class="col-6">
             <div class="form-group  pr-2 pl-2">
               <label for="contactNo">Contact No</label>
-              <input class="form-control" formControlName="contactNo" id="contactNo" name="contactNo" type="text">
+              <input class="form-control" placeholder="0717777777" formControlName="contactNo" id="contactNo" name="contactNo" type="text">
               <div class="alert bg-danger text-white" *ngIf="!contactNo.valid && contactNo.touched">
                 <div *ngIf="contactNo.errors.required">required to fill</div>
-                <div *ngIf="contactNo.errors.pattern">pattern is wrong</div>
+                <div *ngIf="contactNo.errors.pattern">Wrong number pattern</div>
               </div>
             </div>
             <div class="form-group  pr-2 pl-2">
               <label for="email">email</label>
-              <input class="form-control" formControlName="email" id="email" name="email" type="email">
+              <input class="form-control" placeholder="kamal@gmail.com" formControlName="email" id="email" name="email" type="email">
               <div class="alert bg-danger text-white" *ngIf="!email.valid && email.touched">
                 <div *ngIf="email.errors.required">required to fill</div>
-                <div *ngIf="email.errors.pattern">pattern is wrong</div>
+                <div *ngIf="email.errors.pattern">Wrong email</div>
               </div>
             </div>
             <div class="form-group  pr-2 pl-2">
@@ -74,7 +74,7 @@
               <input class="form-control" formControlName="locationX" id="locationX" name="locationX" type="text">
               <div class="alert bg-danger text-white" *ngIf="!locationX.valid && locationX.touched">
                 <div *ngIf="locationX.errors.required">required to fill</div>
-                <div *ngIf="locationX.errors.pattern">pattern is wrong</div>
+                <div *ngIf="locationX.errors.pattern">Wrong value</div>
               </div>
             </div>
             <div class="form-group  pr-2 pl-2">
@@ -82,7 +82,7 @@
               <input class="form-control" formControlName="locationY" id="locationY" name="locationY" type="text">
               <div class="alert bg-danger text-white" *ngIf="!locationY.valid && locationY.touched">
                 <div *ngIf="locationY.errors.required">required to fill</div>
-                <div *ngIf="locationY.errors.pattern">pattern is wrong</div>
+                <div *ngIf="locationY.errors.pattern">Wrong value</div>
               </div>
             </div>
             <div class="btn-group pl-2">

@@ -28,8 +28,8 @@ export class PatientComponent implements OnInit {
   bedId;
   qnumber;
   queue: Queue[] = []
-  queueVisible:boolean;
-  noSet:boolean;
+  queueVisible: boolean;
+  noSet: boolean;
 
   form = new FormGroup( {
     slevel: new FormControl( '', [Validators.required] ),
@@ -49,9 +49,9 @@ export class PatientComponent implements OnInit {
       this.age = resp.data.age;
       this.district = resp.data.district;
       this.contactNo = resp.data.contactNo;
-      this.qnumber=resp.data.queueNo;
+      this.qnumber = resp.data.queueNo;
       if (this.doctorId == "moh") {
-        this.noSet=false
+        this.noSet = false
         this.visible = false
         this.queueVisible = false;
       } else if (this.doctorId != null && resp.data.admitDate != null) {
@@ -59,42 +59,42 @@ export class PatientComponent implements OnInit {
         this.admitted_by = resp.data.admittedBy
         this.hospital = resp.data.hospitalId
         this.bedId = resp.data.bedId;
-        this.sLevel=resp.data.severityLevel
+        this.sLevel = resp.data.severityLevel
         this.visible = false
         this.queueVisible = false;
-        this.noSet=true
+        this.noSet = true
 
-      }else if(this.doctorId != null && resp.data.admitDate == null){
-        this.admit_date="no"
-        this.admitted_by="no"
-        this.sLevel="no"
+      } else if (this.doctorId != null && resp.data.admitDate == null) {
+        this.admit_date = "no"
+        this.admitted_by = "no"
+        this.sLevel = "no"
         this.hospital = resp.data.hospitalId
         this.bedId = resp.data.bedId;
-        this.visible=true
-        this.queueVisible=false;
-        this.noSet=true
+        this.visible = true
+        this.queueVisible = false;
+        this.noSet = true
 
       } else if (this.doctorId != "moh" && this.doctorId == null) {
-        this.visible=false
+        this.visible = false
         if (resp.data.admittedBy == null && resp.data.bedId != 0) {
           this.hospital = resp.data.hospitalId
           this.bedId = resp.data.bedId;
           this.admit_date = "no"
           this.admitted_by = "no"
-          this.sLevel="no"
-          this.queueVisible=false;
-          this.noSet=true
+          this.sLevel = "no"
+          this.queueVisible = false;
+          this.noSet = true
         } else if (resp.data.admittedBy == null && resp.data.bedId == 0) {
-          this.noSet=false
-          this.queueVisible=true;
+          this.noSet = false
+          this.queueVisible = true;
         } else {
           this.admit_date = resp.data.admitDate
           this.admitted_by = resp.data.admittedBy
           this.hospital = resp.data.hospitalId
           this.bedId = resp.data.bedId;
-          this.sLevel=resp.data.severityLevel
-          this.queueVisible=false;
-          this.noSet=true
+          this.sLevel = resp.data.severityLevel
+          this.queueVisible = false;
+          this.noSet = true
         }
 
       }
@@ -107,17 +107,11 @@ export class PatientComponent implements OnInit {
   }
 
   admit() {
-    this.doctorService.checkIsdirector( this.doctorId ).subscribe( (resp) => {
-      console.log(resp)
+
+    this.patientService.update( this.patientId, this.doctorId, this.form.get( 'slevel' ).value, 'admit' ).subscribe( (resp) => {
+      console.log( resp )
       if (resp.data == true) {
-        this.patientService.update( this.patientId, this.doctorId, this.form.get( 'slevel' ).value, 'admit' ).subscribe( (resp) => {
-          console.log(resp)
-          if (resp.data == true) {
-            this.ngOnInit();
-          }
-        } )
-      } else {
-        alert( "You are not a director!!!" )
+        this.ngOnInit();
       }
     } )
 

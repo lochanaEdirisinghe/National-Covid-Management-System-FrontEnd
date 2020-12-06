@@ -12,8 +12,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  //url = "http://localhost:8080/api/v1/auth/login"
- url = "http://ec2-52-73-113-153.compute-1.amazonaws.com:8080/NCMS_Project-1.0.0/api/v1/auth/login"
+  url = "http://localhost:8080/api/v1/auth/login"
+ //url = "http://ec2-52-73-113-153.compute-1.amazonaws.com:8080/NCMS_Project-1.0.0/api/v1/auth/login"
 
   login(user): Observable<ResponseDto > {
     return this.http.post<ResponseDto >(this.url, user);

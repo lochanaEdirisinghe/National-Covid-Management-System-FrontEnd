@@ -8,7 +8,7 @@
           <div class="col-6">
             <div class="form-group  pr-2 pl-2">
               <label for="hospitalId">Hospital Id</label>
-              <input class="form-control" formControlName="hospitalId" id="hospitalId" name="username" type="text">
+              <input class="form-control" placeholder="H006" formControlName="hospitalId" id="hospitalId" name="username" type="text">
               <div class="alert bg-danger text-white" *ngIf="!hospitalId.valid && hospitalId.touched">
                 <div *ngIf="hospitalId.errors.required">required to fill</div>
                 <div *ngIf="hospitalId.errors.pattern">pattern is wrong</div>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group  pr-2 pl-2">
               <label for="name">Name</label>
-              <input class="form-control" formControlName="name" id="name" name="name" type="text">
+              <input class="form-control" placeholder="Hospital_F" formControlName="name" id="name" name="name" type="text">
               <div class="alert bg-danger text-white" *ngIf="!name.valid && name.touched">
                 <div *ngIf="name.errors.required">required to fill</div>
                 <div *ngIf="name.errors.pattern">pattern is wrong</div>
@@ -73,9 +73,9 @@
             <button (click)="addHospital()" class="btn btn-primary">save</button>
           </div>
 
-          <div class="btn-group pl-2">
+          <!--<div class="btn-group pl-2">
             <button (click)="updateQueue()" class="btn btn-primary">update queue</button>
-          </div>
+          </div>-->
         </div>
         </div>
       </form>

@@ -12,8 +12,8 @@ export class PatientService {
   constructor(private http: HttpClient) {
   }
 
-  //url = "http://localhost:8080/api/v1/patient"
-  url = "http://ec2-52-73-113-153.compute-1.amazonaws.com:8080/NCMS_Project-1.0.0/api/v1/patient"
+  url = "http://localhost:8080/api/v1/patient"
+  //url = "http://ec2-52-73-113-153.compute-1.amazonaws.com:8080/NCMS_Project-1.0.0/api/v1/patient"
 
 
   register(patient): Observable<ResponseDto> {

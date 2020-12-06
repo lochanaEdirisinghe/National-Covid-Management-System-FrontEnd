@@ -57,26 +57,30 @@ export class PatientRegComponent implements OnInit {
   }
 
   register(){
-    this.patientService.register(this.form.value).subscribe((response) => {
-      if (response.data==null) {
-        alert( "Invalid location coordinates" );
-        console.log("Invalid location coordinates")
+    if(this.form.valid){
+      this.patientService.register(this.form.value).subscribe((response) => {
+        if (response.data==null) {
+          alert( "Invalid location coordinates" );
+          console.log("Invalid location coordinates")
 
-      }else if (response.code == 200 && response.data != null ) {
-        alert("patient is added!!")
-        this.router.navigate( ['/patientResponse'], {
-          queryParams :{
-            serialNo: response.data.serialNo,
-            bedNo: response.data.bedNo,
-            hospitalName: response.data.hospitalName,
-            queueNo: response.data.queueNo
-          }
-        });
-      }
-    }, (error) =>{
-      alert("Invalid Registration")
-    } );
-    this.form.reset()
+        }else if (response.code == 200 && response.data != null ) {
+          alert("patient is added!!")
+          this.router.navigate( ['/patientResponse'], {
+            queryParams :{
+              serialNo: response.data.serialNo,
+              bedNo: response.data.bedNo,
+              hospitalName: response.data.hospitalName,
+              queueNo: response.data.queueNo
+            }
+          });
+        }
+      }, (error) =>{
+        alert("Invalid Registration")
+      } );
+      this.form.reset()
+    }else {
+      alert("Fill required input fields")
+    }
   }
 
 }

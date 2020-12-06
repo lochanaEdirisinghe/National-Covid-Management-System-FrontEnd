@@ -34,7 +34,7 @@
       <form [formGroup]="form2">
         <div class="form-group  pr-2 pl-2">
           <label for="pid">Serial Number</label>
-          <input class="form-control" formControlName="pid" id="pid" name="pid" type="text">
+          <input class="form-control" placeholder="Pid518Nuw" formControlName="pid" id="pid" name="pid" type="text">
           <div class="alert bg-danger text-white" *ngIf="!pid.valid && pid.touched">
             <div *ngIf="pid.errors.required">required to fill</div>
             <div *ngIf="pid.errors.minlength">minimum length is 4</div>

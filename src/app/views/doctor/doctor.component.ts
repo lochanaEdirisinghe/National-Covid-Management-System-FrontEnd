@@ -18,7 +18,7 @@ export class DoctorComponent implements OnInit {
   doctorId;
   hospitalId;
   hospitalName;
-  isdirector:boolean;
+  isdirector: boolean;
   @Output() getCurrentUser: EventEmitter<any> = new EventEmitter();
 
   hospitalBed: HospitalBeds[] = [];
@@ -28,12 +28,12 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorId = localStorage.getItem( "doctorId" );
-    this.doctorService.checkIsdirector(this.doctorId).subscribe((resp)=>{
-      this.isdirector=resp.data;
-    });
+    this.doctorService.checkIsdirector( this.doctorId ).subscribe( (resp) => {
+      this.isdirector = resp.data;
+    } );
     this.doctorService.getBedDetails( this.doctorId ).subscribe( (response) => {
       if (response.code != 200) {
-        alert( "Invalid");
+        alert( "Invalid" );
       } else if (response.code == 200 && response.data != null) {
         this.hospitalId = response.data.hospitalId;
         this.hospitalName = response.data.hospitalName;
@@ -43,22 +43,30 @@ export class DoctorComponent implements OnInit {
 
             this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'admitted', true/*(response.data.hospitalBeds)[i].discharged*/ ) );
           } else {
-            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'notAdmited ', false) );
+            this.hospitalBed.push( new HospitalBeds( (response.data.hospitalBeds)[i].bedId, (response.data.hospitalBeds)[i].patientId, 'notAdmited ', false ) );
           }
         }
       }
     } )
     this.sharedService.sendClickEvent();
-    this.sharedService.toggle(this.doctorId);
+    this.sharedService.toggle( this.doctorId );
 
 
   }
 
-
   isdischarged(bed, patientId) {
-    this.patientService.update( patientId, this.doctorId, '', 'discharge' ).subscribe( (resp) => {
+    this.doctorService.checkIsdirector( this.doctorId ).subscribe( (resp) => {
+      console.log( resp )
       if (resp.data == true) {
-        this.hospitalBed.splice( this.hospitalBed.findIndex( x => x.patientId === bed.patientId ), 1 )
+
+        this.patientService.update( patientId, this.doctorId, '', 'discharge' ).subscribe( (resp) => {
+          if (resp.data == true) {
+            this.hospitalBed.splice( this.hospitalBed.findIndex( x => x.patientId === bed.patientId ), 1 )
+          }
+        } )
+
+      } else {
+        alert( "You are not a director!!!" )
       }
     } )
   }
@@ -67,9 +75,21 @@ export class DoctorComponent implements OnInit {
     this.router.navigate( ['/patient'], {
       queryParams: {
         patientId: patientId,
-        doctorId: this.doctorId
+        doctorId: this.doctorId,
       }
     } );
+  }
+
+
+  doctorList(){
+    this.router.navigate(['/doctorList'],
+      {
+        queryParams:{
+          hospitalId: this.hospitalId,
+          directorId: this.doctorId,
+          hospitalName:this.hospitalName
+        }
+      });
   }
 
 }

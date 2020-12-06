@@ -12,6 +12,7 @@ import {PatientComponent} from "./views/patient/patient.component";
 import {HospitalAddComponent} from "./views/hospital-add/hospital-add.component";
 import {PatientStaticsComponent} from "./views/patient-statics/patient-statics.component";
 import {PatientListComponent} from "./views/patient-list/patient-list.component";
+import {DoctorListComponent} from "./views/doctor-list/doctor-list.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,9 @@ const routes: Routes = [
   },
   {
     path: "patientList", component: PatientListComponent
+  },
+  {
+    path: "doctorList", component: DoctorListComponent
   },
   {
     path : 'addhospital', component : HospitalAddComponent
